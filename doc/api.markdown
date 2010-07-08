@@ -2746,19 +2746,19 @@ By default, this function will perform PHP/Rails-style parameter mungeing for ar
 values within `obj`.
 Example:
 
-    querystring.stringify({foo: 'bar', foo: 'baz', foo: 'boz'})
-    // returns
-    'foo=boz'
+    querystring.stringify({foo: ['bar', 'baz', 'boz']})
+    // returns URI-escaped "foo[]=bar&foo[]=baz&foo[]=boz":
+    'foo%5B%5D=bar&foo%5B%5D=baz&foo%5B%5D=boz'
 
     querystring.stringify({foo: {bar: 'baz'}})
-    // returns
-    'foo[bar]=baz'
+    // returns URI-escaped "foo[bar]=baz":
+    'foo%5Bbar%5D=baz'
 
 If you wish to disable the array mungeing (e.g. when generating parameters for a Java servlet), you
 can set the `munge` argument to `false`.
 Example:
 
-    querystring.stringify({foo: 'bar', foo: 'baz', foo: 'boz'}, '&', '=', false)
+    querystring.stringify({foo: ['bar', 'baz', 'boz']}, '&', '=', false)
     // returns
     'foo=bar&foo=baz&foo=boz'
 
