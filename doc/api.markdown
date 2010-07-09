@@ -1634,15 +1634,11 @@ This is an EventEmitter with the following events:
  Emitted when the server closes. 
 
 
-### http.createServer(requestListener, [options])
+### http.createServer(requestListener)
 
-Returns a new web server object.
+Returns a new http.Server object (which inherits net.Server).
 
-The `options` argument is optional. The
-`options` argument accepts the same values as the
-options argument for `net.Server`.
-
-The `requestListener` is a function which is automatically
+The `requestListener` is an optional function which is automatically
 added to the `'request'` event.
 
 ### Event: 'request'
